@@ -1,6 +1,7 @@
 const express = require('express')
 const { getAllPost, createPost, getPost, updatePost, deletePost, checkID } = require('./../controllers/postHandlers')
 const router = express.Router()
+const { protect } = require('./../controllers/authController')
 
 //router.param('id', checkID) // middleware to check if id is valid
 
@@ -36,7 +37,6 @@ const router = express.Router()
  *           type: string
  *           description: The the body of the post
  *       example:
- *         id: d5-fpl___aszuyuytuytu
  *         title: The Beauty of JavaScript
  *         author: japheth
  *         description: This the post about js
@@ -92,6 +92,7 @@ router.route('/').get(getAllPost).post(createPost)
  * /api/posts/{id}:
  *   get:
  *     summary: Get the post by id
+ *     tags:[posts]
  *     parameters:
  *       - in: path
  *         name: id
@@ -137,16 +138,16 @@ router.route('/').get(getAllPost).post(createPost)
  *            schema:
  *              $ref: '#/components/schemas/Post'
  *      404:
- *        description: The post was not found
+ *        description: The post was not  found
  */
 
 
 /**
  * @swagger
- * post/posts/{id}:
+ * /api/posts/{id}:
  *   delete:
  *     summary: Remove the post by id
- *     tags: [post]
+ *     tags: [posts]
  *     parameters:
  *       - in: path
  *         name: id

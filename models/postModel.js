@@ -22,6 +22,10 @@ const postSchema = mongoose.Schema({
     },
     content: {
         Type: String
+    },
+    likes: {
+        type: Number,
+        default: 0
     }
 
 })

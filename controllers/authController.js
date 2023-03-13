@@ -1,5 +1,6 @@
 const User = require('./../models/userModel')
 const jwt = require('jsonwebtoken')
+    // const { promisify } = require('util')
 
 exports.signup = async(req, res, next) => {
     try {
@@ -63,3 +64,27 @@ exports.login = async(req, res, next) => {
         })
     }
 }
+
+
+// exports.protect = async(req, res, next) => {
+//     try {
+//         console.log(req.headers)
+//         let token;
+//         if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+//             token = req.headers.authorization.split(' ')[1]
+//         }
+//         if (!token) {
+//             res.status(401).json({
+//                     status: "failed",
+//                     message: "you are not logged in."
+//                 })
+//                 // return next('not logged in')
+//         }
+//         console.log('TOKEN = ' + token)
+//         const decoded = await promisify(jwt.verify)(token, JWT_SECRET)
+//         console.log(decoded)
+//         next()
+//     } catch (err) {
+
+//     }
+// }
