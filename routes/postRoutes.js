@@ -46,12 +46,28 @@ const { protect } = require('./../controllers/authController')
  * 
  */
 
+
 /**
  * @swagger
  * /api/posts:
  *   get:
  *     summary: Returns the list of all the post
  *     tags: [posts]
+ *     parameters:
+ *       - in: query
+ *         name: sort
+ *         description: Sort order for blog posts
+ *         schema:
+ *           type: string
+ *           example: '-publishedAt'
+ *         required: false
+ *       - in: query
+ *         name: [author, likes, title]
+ *         description: filtering for blog posts
+ *         schema:
+ *           type: string
+ *           example: 'author=japheth'
+ *         required: false
  *     responses:
  *       200:
  *         description: The list of the posts
@@ -92,7 +108,7 @@ router.route('/').get(getAllPost).post(createPost)
  * /api/posts/{id}:
  *   get:
  *     summary: Get the post by id
- *     tags:[posts]
+ *     tags: [posts]
  *     parameters:
  *       - in: path
  *         name: id
